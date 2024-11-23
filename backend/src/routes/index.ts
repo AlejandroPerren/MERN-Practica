@@ -5,7 +5,7 @@ Se encarga de las peticiones
 
 import express,{Request, Response} from "express";
 import helloRouter from "./HelloRoutes";
-import { LogInfo } from "@/utils/logger";
+import { LogInfo } from "../utils/logger";
 
 //intancia del server
 
@@ -19,7 +19,7 @@ let rootRouter = express.Router();
 
 rootRouter.get("/", (req: Request, res: Response)=> {
     LogInfo("que onda chabal")
-    res.send("hola que tal")
+    res.send("hola que tal probando")
 })
 
 //redirecciones

@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsac --watch \" \"nodemon -q dist/index.js\"",
+    "start": "node dist/src/index.js",
+    "dev": "concurrently \"npx tsc --watch \" \"nodemon -q dist/src/index.js\"",
     "lint": "eslint .",
     "test": "jest",
     "serve:coverage": "npm run test && npx wait-on coverage/lcov-report/index.html && npx serve coverage/lcov-report"
@@ -17,7 +17,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "envalid": "^8.0.0",
     "express": "^4.21.1",
     "helmet": "^8.0.0"
   },

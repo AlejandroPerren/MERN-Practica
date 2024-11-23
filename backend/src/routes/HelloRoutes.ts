@@ -1,23 +1,23 @@
 import express, { Request, Response } from "express";
-import { HelloController } from "@/controller/HelloController";
-import { LogInfo } from "@/utils/logger";
-
+import { HelloController } from "../controller/HelloController";
+import { LogInfo } from "../utils/logger";
 
 let helloRouter = express.Router();
 
 helloRouter.route("/")
     .get(async (req: Request, res: Response) => {
-    //obtener a Query Param
+        // Obtener el parámetro de consulta
+        let name: string | undefined = req?.query?.name as string | undefined;
+        LogInfo(`Query Param: ${name}`);
 
-    let name: string | undefined = req?.query?.name;
-    LogInfo(`Query Param: ${name}`);
+        // Instancia del controlador
+        const controller: HelloController = new HelloController();
 
-    // instancia del Controllador
-    const controller: HelloController = new HelloController();
-    //obtenemos la respuesta
-    const response = await controller.getMessage(name)
-    //mandamos la Respuesta
-    return res.send(response)
-})
+        // Obtener la respuesta
+        const response = await controller.getMessage(name);
+
+        // Mandar la respuesta sin retornar explícitamente
+        res.send(response);
+    });
 
 export default helloRouter;

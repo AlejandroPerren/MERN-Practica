@@ -1,15 +1,31 @@
-import app from "@/app";
+//express
+import express,{Express, Request, Response } from "express";
+//security
+import cors from "cors"
+import helmet from "helmet"
 
-import env from "@/utils/validateEnv"
+//express Config
+const server: Express = express();
+server.use(express.json({limit: '50mb'}))
+server.use(express.urlencoded({extended: true, limit: '50mb'}))
 
-import rootRouter from '../routes'
-const PORT = env.PORT || 4000
+//Security Config
+server.use(helmet());
+server.use(cors())
 
-app.use("/api", rootRouter )
+//Root Router
+import router from "../routes"
+
+
+//server in /api
+server.use("/api", router )
+
+
+//always api redirect
+server.get("/",(req: Request, res: Response)=>{
+    res.redirect("/api")
+})
 
 
 
-app.listen(PORT, ()=> {
-    console.log("Server Start in Port: ", PORT);
-});
-
+export default server;
