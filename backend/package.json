@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npx tsc --watch \" \"nodemon -q dist/src/index.js\"",
+    "swagger": "tsoa spec",
+    "dev": "concurrently \"npx tsc --watch\" \"npm run swagger\" \"nodemon -q dist/src/index.js\"",
     "lint": "eslint .",
     "test": "jest",
     "serve:coverage": "npm run test && npx wait-on coverage/lcov-report/index.html && npx serve coverage/lcov-report",
