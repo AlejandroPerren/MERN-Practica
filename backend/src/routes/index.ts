@@ -6,6 +6,7 @@ Se encarga de las peticiones
 import express,{Request, Response} from "express";
 import helloRouter from "./HelloRoutes";
 import { LogInfo } from "../utils/logger";
+import usersRouter from "./UserRouter";
 
 //intancia del server
 
@@ -25,6 +26,9 @@ rootRouter.get("/", (req: Request, res: Response)=> {
 //redirecciones
 server.use("/", rootRouter);
 server.use("/hello", helloRouter);
+
+//Users
+server.use("/users", usersRouter)
 
 
 export default server;

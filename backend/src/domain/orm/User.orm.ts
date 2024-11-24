@@ -1,5 +1,5 @@
 import { userEntity } from "../entities/User.entity";
-import { LogError, LogSuccess } from "@/utils/logger";
+import { LogError, LogSuccess } from "../../utils/logger";
 
 
 //CRUD
@@ -7,7 +7,7 @@ import { LogError, LogSuccess } from "@/utils/logger";
 /**
  * Method to obtain all Users From Collection "users" in Mongo Server
  */
-export const GetAllUsers = async (): Promise<any[]| undefined>=> {
+export const getAllUsers = async (): Promise<any[]| undefined>=> {
     try{
         let userModel = userEntity();
 
@@ -18,4 +18,17 @@ export const GetAllUsers = async (): Promise<any[]| undefined>=> {
         LogError(`[ORM ERROR]: Getting All Users: ${error}`);
     }
 }
+
+export const getUserByID = async (id: string): Promise<any | undefined>=> {
+    try{
+        let userModel = userEntity();
+
+        //search user BY id
+        return await userModel.findById(id);
+
+    }catch(error){
+        LogError(`[ORM ERROR]: Getting User By Id: ${error}`);
+    }
+}
+
 
