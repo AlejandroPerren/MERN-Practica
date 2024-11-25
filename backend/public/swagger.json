@@ -62,6 +62,64 @@
 					}
 				]
 			}
+		},
+		"/api/users": {
+			"get": {
+				"operationId": "GetUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Endpoint to retrieve users from the \"Users\" collection in the DB.\r\nIf an ID is provided, retrieves the specific user; otherwise, retrieves all users.",
+				"tags": [
+					"UserController"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"delete": {
+				"operationId": "DeleteUsers",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {}
+							}
+						}
+					}
+				},
+				"description": "Endpoint to delete a user from the \"Users\" collection in the DB.\r\nIf an ID is provided, deletes the specific user; otherwise, returns a warning message.",
+				"tags": [
+					"UserController"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "id",
+						"required": false,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
 		}
 	},
 	"servers": [

@@ -1,14 +1,12 @@
 import mongoose from "mongoose";
 
+// User Schema
+export const userEntity = () => {
+    const userSchema = new mongoose.Schema({
+        name: String,
+        email: String,
+        age: Number,
+    });
 
-export const userEntity = ()=> {
-    let userSchema = new mongoose.Schema(
-        {
-           name: String,
-           email: String,
-           age: Number 
-        }
-    )
-    
-    return mongoose.models.User || mongoose.model('Users', userSchema);
+    return mongoose.models.Users || mongoose.model("Users", userSchema);
 };
